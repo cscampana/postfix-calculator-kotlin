@@ -1,4 +1,4 @@
-class calc : operations {
+class calc(): operations{
     override fun add(a: Double, b: Double): Double {
         return a + b
     }
