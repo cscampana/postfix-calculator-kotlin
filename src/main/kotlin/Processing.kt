@@ -33,10 +33,11 @@ class CommandProp() {
     }
 
     fun readCommandLine() {
-        val processing: Processing = Processing()
-        val calc: calc = calc()
+        val processing = Processing()
+        val calc = Calc()
         var command: Any? = null
         while (command != 'c') {
+            print(CLI.inputSymbol)
             command = readLine()
             if (command?.toDoubleOrNull() != null && command != null) {
                 processing.pushElement(command.toDouble())

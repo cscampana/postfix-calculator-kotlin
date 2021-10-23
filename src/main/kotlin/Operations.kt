@@ -1,4 +1,4 @@
-interface operations {
+interface Operations {
 
     fun add(a : Double, b : Double) : Double
     fun subtract(a : Double, b : Double) : Double

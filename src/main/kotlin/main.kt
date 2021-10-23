@@ -1,7 +1,8 @@
-
-fun main(){
-    val cli = CommandProp()
-    cli.readCommandLine()
+fun main() {
+    //val cli = CommandProp()
+    // cli.readCommandLine()
+    val flt = FactorialLookupTable()
+    flt.printTable()
 
 }
 

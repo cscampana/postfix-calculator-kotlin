@@ -1,2 +1,2 @@
 # postfix-calculator-kotlin
-A postfix calculator implemented in Kotlin with advanced operations.
+A postfix calculator implemented in Kotlin with advanced Operations.
