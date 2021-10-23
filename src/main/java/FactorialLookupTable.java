@@ -1,10 +1,11 @@
+import java.io.*;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
 public class FactorialLookupTable {
     private BigInteger result;
-    private Map<Integer, BigInteger> lookupTable;
+    private Map<Long, BigInteger> lookupTable;
 
     public FactorialLookupTable() {
         lookupTable = new HashMap<>();
@@ -26,21 +27,34 @@ public class FactorialLookupTable {
     }
 
     public void allFactorials() {
-        for (int i = 1; i < 100; i++) {
-            int key = i;
+        for (long i = 1; i < 5000000; i++) {
+            long n = i;
             BigInteger allresult = new BigInteger("1");
-            while (i > 0) {
+            while (n > 0) {
                 allresult = allresult.multiply(BigInteger.valueOf(i));
-                i--;
+                n--;
             }
-            lookupTable.put(key, allresult);
+            lookupTable.put(i, allresult);
         }
     }
     public void printTable(){
         System.out.println("All the factorials \n " +
                 "N \t N!");
-        for ( int key : lookupTable.keySet()) {
-            System.out.printf("%d  %d", key, lookupTable.get(key));
+        for ( long key : lookupTable.keySet()) {
+            System.out.printf(" %d   %d\n", key, lookupTable.get(key));
+        }
+    }
+
+    public void lookUpTableSave()  {
+        try {
+            FileOutputStream fileLookUp = new FileOutputStream("factorials.txt");
+            ObjectOutputStream mapOutput = new ObjectOutputStream(fileLookUp);
+            mapOutput.writeObject(lookupTable);
+
+            fileLookUp.close();
+            mapOutput.close();
+        } catch(IOException e){
+            e.printStackTrace();
         }
     }
 }

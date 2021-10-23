@@ -3,6 +3,6 @@ fun main() {
     // cli.readCommandLine()
     val flt = FactorialLookupTable()
     flt.printTable()
-
+    flt.lookUpTableSave()
 }
 
