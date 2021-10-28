@@ -14,6 +14,7 @@ public class FactorialLookupTable {
     }
 
     public FactorialLookupTable(String file) {
+        //TODO: Create a mechanism to check if the file exists, if not create it.
         lookupTableRead(file);
     }
 
