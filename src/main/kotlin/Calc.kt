@@ -18,14 +18,20 @@ class Calc() : Operations {
     }
 
     override fun sqrt(a: Double): Double {
-        TODO("Not yet implemented")
+        var res: Double
+        var x0 = a/2
+        for(r in 1..200){
+            x0 = 0.5*(x0 + (a/x0))
+        }
+
+        return x0
     }
 
     override fun gcd(a: Double, b: Double): Double {
         var aGDC = a
         var bGDC = b
         while( bGDC != 0.0){
-            var t = bGDC
+            val t = bGDC
             bGDC = aGDC.mod(bGDC)
             aGDC = t
         }
