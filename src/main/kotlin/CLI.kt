@@ -12,4 +12,6 @@ object CLI {
     const val notValid: String = "This symbol is not valid, please input a valid symbol, or if \n" +
             "you need help, input h"
     const val inputSymbol: String = ">>> "
+    const val cosWarning: String = "This operation supports values between 0 and 2PI"
+    const val emptyStack: String = "There are no stored values"
 }

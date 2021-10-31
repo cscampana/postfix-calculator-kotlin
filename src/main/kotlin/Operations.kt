@@ -9,5 +9,9 @@ interface Operations {
     fun sqrt(a : Double) : Double
     fun gcd(a : Double, b : Double) : Double
     fun printFactorials(table : Map<Long,BigInteger>)
-    fun printFactorials(table:Map<Long,BigInteger>, factorial: Long);
+    fun printFactorials(table:Map<Long,BigInteger>, factorial: Long)
+    fun returnFactorials(table:Map<Long,BigInteger>, factorial: Long): BigInteger?
+    fun cos(theta:Double): Double
+    fun sin(theta:Double): Double
+    fun tan(theta:Double): Double
 }

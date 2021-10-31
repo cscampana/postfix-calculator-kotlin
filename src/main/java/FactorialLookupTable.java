@@ -10,11 +10,13 @@ public class FactorialLookupTable {
     public FactorialLookupTable() {
         lookupTable = new HashMap<>();
         result = new BigInteger("1");
-        allFactorials();
     }
 
     public FactorialLookupTable(String file) {
         //TODO: Create a mechanism to check if the file exists, if not create it.
+        lookupTable = new HashMap<>();
+        result = new BigInteger("1");
+        allFactorials();
         lookupTableRead(file);
     }
 
@@ -23,11 +25,12 @@ public class FactorialLookupTable {
         calculateFactorial(numberToBeMultiplied);
     }
 
-    private void calculateFactorial(int n) {
+    private BigInteger calculateFactorial(int n) {
         while (n > 0) {
             result = result.multiply(BigInteger.valueOf(n));
             n--;
         }
+        return result;
     }
 
     public void allFactorials() {
@@ -63,7 +66,7 @@ public class FactorialLookupTable {
         }
     }
 
-    private void lookupTableRead(String file){
+    private void lookupTableRead(String file) {
         try {
             FileInputStream fileTable = new FileInputStream(file);
             ObjectInputStream mapInput = new ObjectInputStream(fileTable);
@@ -71,12 +74,16 @@ public class FactorialLookupTable {
 
             mapInput.close();
             fileTable.close();
-        } catch (IOException | ClassNotFoundException e ){
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     public Map<Long, BigInteger> getMap() {
         return lookupTable;
+    }
+
+    public BigInteger getFactorial(int n) {
+        return calculateFactorial(n);
     }
 }

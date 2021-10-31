@@ -15,6 +15,7 @@ class Processing() {
     }
 
     fun printStack() {
+        if(stack.isEmpty()) println(CLI.emptyStack)
         for (d: Double in stack) {
             println(d)
         }
@@ -36,13 +37,15 @@ class CommandProp() {
         val processing = Processing()
         val calc = Calc()
         var command: Any? = null
-        while (command != 'c') {
+        while (command != 'q') {
             print(CLI.inputSymbol)
             command = readLine()
+
             if (command?.toDoubleOrNull() != null && command != null) {
                 processing.pushElement(command.toDouble())
                 continue
             }
+
             command = command!![0]
             when (command) {
                 '+' -> {
@@ -74,6 +77,16 @@ class CommandProp() {
                 }
                 '/' -> {
                     processing.pushElement(calc.divide(processing.popNumber(), processing.popNumber()))
+                    processing.printTop()
+                }
+                'c','C' -> {
+                    val cosVal: Double = processing.popNumber()
+                    if(cosVal < 0 || cosVal > 2*Math.PI) {
+                        processing.pushElement(cosVal)
+                        println(CLI.cosWarning)
+                        continue
+                    }
+                    processing.pushElement(calc.cos(cosVal))
                     processing.printTop()
                 }
                 'h','H' -> println(CLI.operations)
